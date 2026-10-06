@@ -1,23 +1,21 @@
 import java.util.*;
 class Solution {
     public int maxArea(int[] height) {
-        int l = 0;
-        int r = height.length-1;
-        int maxwater = 0;
-        while ( l<r){
-           int w = r-l;
-           int h = Math.min (height[l],height[r]);
-           int curw = w*h;
-           maxwater = Math.max(curw , maxwater);
-           if (height[l]<height[r]){
-            l ++;
-           }
-           else{
-            r--;
-           }
-            
+        int left = 0;
+        int right = height.length - 1;
+        int maxarea = 0;
+        while (left < right){
+            int currheight =Math.min (height[left], height[right]);
+            int currarea = currheight*(right - left);
+            maxarea = Math.max( currarea , maxarea);
+            if ( height[left]<height[right]){
+                left++;
+            }
+            else {
+                right--;
+            }
         }
-        return maxwater;
-        
+         return maxarea;
     }
+   
 }
